@@ -489,7 +489,7 @@
         const section = $('#cobertura');
         const items = $$('[data-city]', section || document);
         if (!section || !items.length) return;
-        const keys = ['gdl', 'cg', 'col', 'cdmx'];
+        const keys = ['gdl', 'cg', 'col', 'cdmx', 'pa', 'co', 've', 'br'];
         let idx = 0, timer = 0, paused = false, inView = false;
 
         const set = (key) => items.forEach((el) => el.classList.toggle('is-on', el.dataset.city === key));
@@ -499,7 +499,7 @@
 
         if (reduceMotion) { set(keys[0]); return; }
         if (hasIO) new IntersectionObserver(([e]) => { inView = e.isIntersecting; inView ? start() : stop(); }, { threshold: 0.3 }).observe(section);
-        $$('#cities li').forEach((li) => {
+        $$('.cities li').forEach((li) => {
             li.addEventListener('pointerenter', () => { paused = true; stop(); set(li.dataset.city); });
             li.addEventListener('pointerleave', () => { paused = false; start(); });
         });
@@ -536,7 +536,7 @@
         const rules = {
             nombre: (v) => (v.trim().length >= 2 ? '' : 'Escribe tu nombre para saber a quién responder.'),
             servicio: (v) => (v ? '' : 'Elige qué necesitas para tu evento.'),
-            ciudad: (v) => (v ? '' : 'Selecciona la ciudad del evento.')
+            ciudad: (v) => (v ? '' : 'Selecciona la ciudad o el país del evento.')
         };
 
         const setError = (name, message) => {
@@ -575,7 +575,7 @@
             const lines = [
                 `Hola Maya Models, soy ${data.nombre.trim()}${data.empresa && data.empresa.trim() ? ` de ${data.empresa.trim()}` : ''}.`,
                 `Quiero cotizar: ${data.servicio}.`,
-                `Ciudad del evento: ${data.ciudad}.`
+                `Ciudad o país del evento: ${data.ciudad}.`
             ];
             if (data.fecha) lines.push(`Fecha aproximada: ${formatDate(data.fecha)}.`);
             if (data.mensaje && data.mensaje.trim()) lines.push(`Detalles: ${data.mensaje.trim()}`);

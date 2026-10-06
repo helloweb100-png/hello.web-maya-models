@@ -661,6 +661,21 @@ html:not(.js) .wi { transform: none; }
 .reel-end-title { font: 700 clamp(1.3rem, 4vw, 1.8rem)/1.15 var(--font-display); letter-spacing: -.03em; }
 .reel-progress { display: none; }
 
+/* ---------- 12b. Galería de eventos (mosaico en tarjetas) ---------- */
+.gallery-grid { columns: 2; column-gap: 12px; }
+.g-card { break-inside: avoid; margin-bottom: 12px; }
+.g-card figure {
+    position: relative; overflow: hidden; border-radius: var(--r-card);
+    border: 1px solid var(--line); background: var(--bg-3);
+}
+.g-card img { display: block; width: 100%; height: auto; transition: transform 1.4s var(--ease); }
+.g-card:hover img { transform: scale(1.05); }
+.g-card figcaption {
+    position: absolute; inset: auto 0 0 0; padding: 40px 14px 12px;
+    font: 600 .78rem/1.25 var(--font-display); letter-spacing: -.01em; color: #f5eff0;
+    background: linear-gradient(to top, rgba(8, 5, 6, .88), transparent);
+}
+
 /* ---------- 13. Industrias (bento) ---------- */
 .bento {
     display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; grid-auto-rows: minmax(200px, auto);
@@ -756,6 +771,7 @@ html:not(.js) .wi { transform: none; }
     transition: border-color .5s, background .5s, transform .7s var(--ease); cursor: default;
 }
 .cities li.is-on { border-color: var(--accent); background: linear-gradient(90deg, rgba(225, 29, 46, .16), transparent 80%), var(--surface); }
+.cities--intl { margin-top: 10px; }
 .cities strong { font: 600 1.02rem/1.2 var(--font-display); letter-spacing: -.02em; }
 .cities span { font: 500 .72rem/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--text-3); }
 
@@ -962,6 +978,9 @@ html.menu-open .wa-float { opacity: 0; pointer-events: none; transform: scale(.8
    ========================================================================== */
 @media (min-width: 640px) {
     :root { --gutter: 28px; --header-h: 68px; }
+    .gallery-grid { columns: 3; column-gap: 16px; }
+    .g-card { margin-bottom: 16px; }
+    .g-card figcaption { padding: 48px 18px 14px; font-size: .86rem; }
     .hero-ctas .btn { flex: 0 0 auto; }
     .stats { grid-template-columns: repeat(3, 1fr); gap: 28px; }
     .form { grid-template-columns: 1fr 1fr; padding: 34px; gap: 20px; }
