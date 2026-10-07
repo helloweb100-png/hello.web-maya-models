@@ -489,7 +489,7 @@
         const section = $('#cobertura');
         const items = $$('[data-city]', section || document);
         if (!section || !items.length) return;
-        const keys = ['gdl', 'cg', 'col', 'cdmx', 'pa', 'co', 've', 'br'];
+        const keys = ['gdl', 'pa', 'co', 've', 'br'];
         let idx = 0, timer = 0, paused = false, inView = false;
 
         const set = (key) => items.forEach((el) => el.classList.toggle('is-on', el.dataset.city === key));
